@@ -1,6 +1,7 @@
 import { ReactNode, useState } from "react";
 import { Link, useLocation } from "wouter";
-import { KeyRound, Menu, X, Phone, Mail, Globe } from "lucide-react";
+import { Menu, X, Phone, Mail, Globe } from "lucide-react";
+import logoMk from "@/assets/logo-mk.png";
 
 export function Layout({ children }: { children: ReactNode }) {
   const [location] = useLocation();
@@ -35,21 +36,13 @@ export function Layout({ children }: { children: ReactNode }) {
       <header style={{ backgroundColor: "#0f1117" }} className="sticky top-0 z-50 w-full">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8 max-w-6xl">
 
-          {/* Logo + name */}
-          <Link href="/" className="flex items-center gap-2.5 group" onClick={() => setMobileMenuOpen(false)}>
-            <div className="w-8 h-8 rounded flex items-center justify-center" style={{ backgroundColor: "#C9981F" }}>
-              <KeyRound className="h-4 w-4 text-white" />
-            </div>
-            <div className="flex flex-col leading-tight">
-              {/* BRANDING: Business name in header */}
-              <span className="font-serif font-bold text-base text-white tracking-wide group-hover:opacity-90 transition-opacity">
-                {businessName}
-              </span>
-              {/* BRANDING: Tagline below name in header */}
-              <span className="text-[10px] tracking-widest uppercase hidden sm:block" style={{ color: "#C9981F" }}>
-                {tagline}
-              </span>
-            </div>
+          {/* BRANDING: Logo — swap logo-mk.png in src/assets to change */}
+          <Link href="/" className="flex items-center group" onClick={() => setMobileMenuOpen(false)}>
+            <img
+              src={logoMk}
+              alt={businessName}
+              className="h-12 w-auto object-contain group-hover:opacity-90 transition-opacity"
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -58,12 +51,12 @@ export function Layout({ children }: { children: ReactNode }) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`px-4 py-2 rounded transition-colors ${
+                className="px-4 py-2 rounded transition-colors"
+                style={
                   location === item.href
-                    ? "text-white font-semibold"
-                    : "text-gray-400 hover:text-white"
-                }`}
-                style={location === item.href ? { color: "#C9981F" } : undefined}
+                    ? { color: "#C9981F", fontWeight: 600 }
+                    : { color: "#9ca3af" }
+                }
               >
                 {item.name}
               </Link>
@@ -138,13 +131,12 @@ export function Layout({ children }: { children: ReactNode }) {
 
             {/* Brand block */}
             <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded flex items-center justify-center shrink-0" style={{ backgroundColor: "#C9981F" }}>
-                  <KeyRound className="h-3.5 w-3.5 text-white" />
-                </div>
-                {/* BRANDING: Business name in footer */}
-                <span className="font-serif font-bold text-white text-base">{businessName}</span>
-              </div>
+              {/* BRANDING: Footer logo */}
+              <img
+                src={logoMk}
+                alt={businessName}
+                className="h-16 w-auto object-contain self-start"
+              />
               {/* BRANDING: Tagline in footer */}
               <p className="text-xs tracking-widest uppercase" style={{ color: "#C9981F" }}>{tagline}</p>
               <p className="text-sm text-gray-400 leading-relaxed mt-1">
@@ -157,7 +149,7 @@ export function Layout({ children }: { children: ReactNode }) {
               <h4 className="text-sm font-semibold text-white mb-1 uppercase tracking-wide">Our Services</h4>
               <Link href="/btl" className="text-sm text-gray-400 hover:text-white transition-colors">BTL Property Investment</Link>
               <Link href="/mortgage" className="text-sm text-gray-400 hover:text-white transition-colors">Mortgage Advice</Link>
-              <Link href="/tax" className="text-sm text-gray-400 hover:text-white transition-colors">Tax & Accounting</Link>
+              <Link href="/tax" className="text-sm text-gray-400 hover:text-white transition-colors">Tax &amp; Accounting</Link>
             </div>
 
             {/* Contact */}
