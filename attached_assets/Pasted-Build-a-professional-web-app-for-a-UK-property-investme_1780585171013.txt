@@ -1,0 +1,111 @@
+Build a professional web app for a UK property investment and mortgage advisory business.
+
+The app must contain three enquiry forms:
+
+1. BTL Property Investment Enquiry Form
+2. Mortgage Enquiry Form
+3. Tax, Accounting & Limited Company Formation Enquiry Form
+
+Use a clean, modern, mobile-friendly layout. The design should feel professional, trustworthy, and suitable for UK mortgage, property investment, tax and accounting clients.
+
+Required pages/sections:
+- Home page with short introduction
+- Three service cards linking to each form
+- Separate form page or tab for each enquiry type
+- Thank-you confirmation message after submission
+- Admin-friendly submitted data structure
+
+Form 1: BTL Property Investment Enquiry Form
+Include fields:
+- Full name
+- Email address
+- Mobile number
+- Current postcode
+- Are you a first-time landlord? Yes/No
+- Investment goal: capital growth, rental income, portfolio building, tax planning, other
+- Preferred investment location
+- Budget / deposit available
+- Expected purchase price range
+- Ownership preference: personal name, limited company, unsure
+- Existing properties owned
+- Type of property interested in: single let, HMO, serviced accommodation, multi-unit, commercial conversion, unsure
+- Finance required? Yes/No/Unsure
+- Expected rental income, if known
+- Timescale to invest
+- Main questions or concerns
+- Consent checkbox for being contacted
+- Privacy notice acknowledgement checkbox
+
+Form 2: Mortgage Enquiry Form
+Include fields:
+- Full name
+- Email address
+- Mobile number
+- Postcode
+- Mortgage type: residential, buy-to-let, remortgage, product transfer, limited company BTL, bridging/development finance
+- Purchase price or property value
+- Mortgage amount required
+- Deposit or equity available
+- Employment status
+- Annual income
+- Credit history: excellent, good, fair, poor, unsure
+- Property location
+- Timescale
+- Do you already have a mortgage offer? Yes/No
+- Preferred contact method
+- Consent checkbox
+- Privacy notice acknowledgement checkbox
+
+Form 3: Tax, Accounting & Limited Company Formation Enquiry Form
+Include fields:
+- Full name
+- Email address
+- Mobile number
+- Are you already investing in property? Yes/No
+- Do you already have a limited company? Yes/No
+- Service required: limited company setup, bookkeeping, annual accounts, corporation tax, self-assessment, VAT, payroll, SPV setup, property tax planning, other
+- Number of properties owned
+- Estimated annual rental income
+- Are properties owned personally or through a company?
+- Do you need help with Companies House registration?
+- Do you need help with business bank account setup?
+- Do you need tax advice before purchasing?
+- Preferred contact method
+- Message / enquiry details
+- Consent checkbox
+- Privacy notice acknowledgement checkbox
+
+Technical requirements:
+- Use React with Vite
+- Use TypeScript
+- Use Tailwind CSS for styling
+- Use React Hook Form or simple controlled components
+- Validate required fields
+- Validate email format
+- Show clear error messages
+- Add a placeholder function called "Submit Enquiry"
+
+On clicking the button
+- send a POST webhook to a webhook URL
+- The webhook URL will be provided in the secret config
+
+
+- Keep the code clean and easy to edit
+- Add comments showing where I can change branding, colours, business name, phone number, and privacy policy text
+
+Branding:
+Business name: [Magic Key Property]
+Headline: Property Investment, Mortgage & Tax Enquiry Hub
+Subheading: Helping clients structure property investments, finance, tax and limited company setup with confidence.
+
+Privacy wording:
+By submitting this form, you consent to being contacted about your enquiry. Your information will be handled in accordance with our Privacy Policy and used only for mortgage, property investment, tax, accounting or company formation-related services.
+
+Important:
+This app should not give regulated mortgage, tax, legal or investment advice automatically. It should only collect enquiries and show a disclaimer that advice will be provided only after a full review by a qualified professional.
+
+Deliver:
+- Complete working Replit project
+- All necessary files
+- Clear setup instructions
+- Polished UI
