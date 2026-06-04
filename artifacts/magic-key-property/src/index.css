@@ -60,102 +60,105 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* LIGHT MODE */
+/* ─── LIGHT MODE ──────────────────────────────────────────────────────────────
+   BRAND PALETTE — Magic Key Property
+   Primary accent: warm gold  (#C9981F → HSL 43 72% 45%)
+   Dark surface:   deep charcoal (#121212 → HSL 0 0% 7%)
+   Background:     warm off-white (#FAF9F6 → HSL 40 20% 98%)
+──────────────────────────────────────────────────────────────────────────── */
 :root {
   --button-outline: rgba(0,0,0, .10);
   --badge-outline: rgba(0,0,0, .05);
-
   --opaque-button-border-intensity: -8;
-
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
 
-  /* Deep Navy / Slate Grey professional premium vibe */
-  /* COLOR: Background */
-  --background: 220 20% 98%;
-  --foreground: 220 40% 10%;
+  /* COLOR: Page background — warm off-white */
+  --background: 40 20% 98%;
+  /* COLOR: Main text — near-black charcoal */
+  --foreground: 220 25% 10%;
 
-  /* COLOR: Borders */
-  --border: 220 20% 88%;
+  /* COLOR: Border lines */
+  --border: 40 15% 88%;
 
-  /* COLOR: Cards */
+  /* COLOR: White card surfaces */
   --card: 0 0% 100%;
-  --card-foreground: 220 40% 10%;
-  --card-border: 220 20% 88%;
+  --card-foreground: 220 25% 10%;
+  --card-border: 40 15% 88%;
 
-  --sidebar: 220 20% 98%;
-  --sidebar-foreground: 220 40% 10%;
-  --sidebar-border: 220 20% 88%;
-  --sidebar-primary: 220 50% 20%;
+  --sidebar: 0 0% 100%;
+  --sidebar-foreground: 220 25% 10%;
+  --sidebar-border: 40 15% 88%;
+  /* COLOR: Sidebar primary uses gold */
+  --sidebar-primary: 43 72% 38%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 220 20% 90%;
-  --sidebar-accent-foreground: 220 50% 20%;
-  --sidebar-ring: 220 50% 20%;
+  --sidebar-accent: 40 15% 94%;
+  --sidebar-accent-foreground: 220 25% 10%;
+  --sidebar-ring: 43 72% 38%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 220 40% 10%;
-  --popover-border: 220 20% 88%;
+  --popover-foreground: 220 25% 10%;
+  --popover-border: 40 15% 88%;
 
-  /* COLOR: Primary (Deep Navy) */
-  --primary: 220 50% 20%;
+  /* COLOR: Primary — rich gold (change hue/sat/lightness here to adjust gold) */
+  --primary: 43 72% 38%;
   --primary-foreground: 0 0% 100%;
 
-  /* COLOR: Secondary */
-  --secondary: 220 20% 92%;
-  --secondary-foreground: 220 50% 20%;
+  /* COLOR: Secondary — light warm grey */
+  --secondary: 40 15% 93%;
+  --secondary-foreground: 220 25% 15%;
 
-  --muted: 220 15% 94%;
-  --muted-foreground: 220 20% 40%;
+  /* COLOR: Muted surfaces */
+  --muted: 40 12% 95%;
+  --muted-foreground: 220 15% 42%;
 
-  --accent: 220 20% 92%;
-  --accent-foreground: 220 50% 20%;
+  /* COLOR: Accent — same as secondary for this palette */
+  --accent: 40 15% 93%;
+  --accent-foreground: 220 25% 15%;
 
-  --destructive: 0 70% 50%;
+  /* COLOR: Errors / destructive */
+  --destructive: 0 68% 48%;
   --destructive-foreground: 0 0% 100%;
 
-  --input: 220 20% 88%;
-  --ring: 220 50% 20%;
-  
-  --chart-1: 220 50% 20%;
-  --chart-2: 200 40% 40%;
-  --chart-3: 180 30% 60%;
-  --chart-4: 160 20% 80%;
-  --chart-5: 140 10% 90%;
+  --input: 40 15% 88%;
+  --ring: 43 72% 38%;
 
+  --chart-1: 43 72% 38%;
+  --chart-2: 200 40% 40%;
+  --chart-3: 180 30% 55%;
+  --chart-4: 30 50% 55%;
+  --chart-5: 260 30% 55%;
+
+  /* FONT: Change font stacks here */
   --app-font-sans: 'Inter', system-ui, sans-serif;
-  --app-font-serif: Georgia, serif;
+  --app-font-serif: Georgia, 'Times New Roman', serif;
   --app-font-mono: Menlo, monospace;
-  
-  --radius: 0.25rem; /* precise, clean edges */
-  
+
+  /* Tight radius for a precise, professional feel */
+  --radius: 0.3rem;
+
   --shadow-2xs: 0px 1px 2px 0px rgba(0,0,0,0.02);
-  --shadow-xs: 0px 1px 2px 0px rgba(0,0,0,0.05);
-  --shadow-sm: 0px 1px 3px 0px rgba(0,0,0,0.08), 0px 1px 2px -1px rgba(0,0,0,0.04);
-  --shadow: 0px 4px 6px -1px rgba(0,0,0,0.1), 0px 2px 4px -2px rgba(0,0,0,0.05);
-  --shadow-md: 0px 10px 15px -3px rgba(0,0,0,0.1), 0px 4px 6px -4px rgba(0,0,0,0.05);
-  --shadow-lg: 0px 20px 25px -5px rgba(0,0,0,0.1), 0px 8px 10px -6px rgba(0,0,0,0.05);
-  --shadow-xl: 0px 25px 50px -12px rgba(0,0,0,0.25);
+  --shadow-xs:  0px 1px 2px 0px rgba(0,0,0,0.05);
+  --shadow-sm:  0px 1px 3px 0px rgba(0,0,0,0.08), 0px 1px 2px -1px rgba(0,0,0,0.04);
+  --shadow:     0px 4px 6px -1px rgba(0,0,0,0.10), 0px 2px 4px -2px rgba(0,0,0,0.05);
+  --shadow-md:  0px 10px 15px -3px rgba(0,0,0,0.10), 0px 4px 6px -4px rgba(0,0,0,0.05);
+  --shadow-lg:  0px 20px 25px -5px rgba(0,0,0,0.10), 0px 8px 10px -6px rgba(0,0,0,0.05);
+  --shadow-xl:  0px 25px 50px -12px rgba(0,0,0,0.25);
   --shadow-2xl: 0px 2px 0px 0px rgba(0,0,0,0.25);
-  
+
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 
-  --sidebar-primary-border: hsl(var(--sidebar-primary));
   --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --sidebar-accent-border: hsl(var(--sidebar-accent));
   --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --primary-border: hsl(var(--primary));
   --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --secondary-border: hsl(var(--secondary));
   --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --muted-border: hsl(var(--muted));
   --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --accent-border: hsl(var(--accent));
   --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --destructive-border: hsl(var(--destructive));
   --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 }
 
+/* Dark mode retains the gold accent on a deep charcoal surface */
 .dark {
   --button-outline: rgba(255,255,255, .10);
   --badge-outline: rgba(255,255,255, .05);
@@ -163,41 +166,41 @@
   --elevate-1: rgba(255,255,255, .04);
   --elevate-2: rgba(255,255,255, .09);
 
-  --background: 220 40% 5%;
-  --foreground: 220 20% 98%;
-  --border: 220 20% 20%;
-  --card: 220 40% 7%;
-  --card-foreground: 220 20% 98%;
-  --card-border: 220 20% 20%;
-  --sidebar: 220 40% 7%;
-  --sidebar-foreground: 220 20% 98%;
-  --sidebar-border: 220 20% 20%;
-  --sidebar-primary: 220 50% 80%;
-  --sidebar-primary-foreground: 220 50% 10%;
-  --sidebar-accent: 220 20% 15%;
-  --sidebar-accent-foreground: 220 20% 98%;
-  --sidebar-ring: 220 50% 80%;
-  --popover: 220 40% 7%;
-  --popover-foreground: 220 20% 98%;
-  --popover-border: 220 20% 20%;
-  --primary: 220 50% 80%;
-  --primary-foreground: 220 50% 10%;
-  --secondary: 220 20% 15%;
-  --secondary-foreground: 220 50% 90%;
-  --muted: 220 20% 15%;
-  --muted-foreground: 220 20% 70%;
-  --accent: 220 20% 15%;
-  --accent-foreground: 220 50% 90%;
-  --destructive: 0 70% 60%;
+  --background: 220 20% 7%;
+  --foreground: 40 20% 96%;
+  --border: 220 15% 20%;
+  --card: 220 20% 10%;
+  --card-foreground: 40 20% 96%;
+  --card-border: 220 15% 20%;
+  --sidebar: 220 20% 10%;
+  --sidebar-foreground: 40 20% 96%;
+  --sidebar-border: 220 15% 20%;
+  --sidebar-primary: 43 72% 55%;
+  --sidebar-primary-foreground: 220 20% 7%;
+  --sidebar-accent: 220 15% 16%;
+  --sidebar-accent-foreground: 40 20% 96%;
+  --sidebar-ring: 43 72% 55%;
+  --popover: 220 20% 10%;
+  --popover-foreground: 40 20% 96%;
+  --popover-border: 220 15% 20%;
+  --primary: 43 72% 55%;
+  --primary-foreground: 220 20% 7%;
+  --secondary: 220 15% 16%;
+  --secondary-foreground: 40 20% 90%;
+  --muted: 220 15% 16%;
+  --muted-foreground: 220 12% 62%;
+  --accent: 220 15% 16%;
+  --accent-foreground: 40 20% 90%;
+  --destructive: 0 68% 58%;
   --destructive-foreground: 0 0% 100%;
-  --input: 220 20% 25%;
-  --ring: 220 50% 80%;
-  
-  --chart-1: 220 50% 80%;
-  --chart-2: 200 40% 60%;
-  --chart-3: 180 30% 40%;
-  --chart-4: 160 20% 30%;
-  --chart-5: 140 10% 20%;
+  --input: 220 15% 22%;
+  --ring: 43 72% 55%;
+
+  --chart-1: 43 72% 55%;
+  --chart-2: 200 40% 55%;
+  --chart-3: 180 30% 45%;
+  --chart-4: 30 50% 50%;
+  --chart-5: 260 30% 50%;
 }
 
 @layer base {

@@ -1,98 +1,155 @@
-import React from "react";
 import { Link } from "wouter";
 import { Layout } from "@/components/layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Home as HomeIcon, Landmark, FileText, ArrowRight, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ArrowRight, Building2, Landmark, FileText, Globe, ShieldCheck } from "lucide-react";
 
 export default function HomePage() {
   return (
     <Layout>
-      <div className="w-full max-w-5xl mx-auto px-4 py-16 md:py-24 animate-in fade-in slide-in-from-bottom-8 duration-700">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center justify-center p-2 bg-primary/5 rounded-full mb-6 text-primary">
-            <ShieldCheck className="w-5 h-5 mr-2" />
-            <span className="text-sm font-medium tracking-wide uppercase">Trusted Advisory</span>
+      {/* ── Hero banner ─────────────────────────────────────────────────────── */}
+      <section
+        className="w-full"
+        style={{ backgroundColor: "#0f1117" }}
+      >
+        <div className="container mx-auto px-4 py-20 md:py-28 max-w-6xl text-center">
+          {/* BRANDING: Badge above headline */}
+          <div
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-8 border"
+            style={{ color: "#C9981F", borderColor: "#C9981F44", backgroundColor: "#C9981F0f" }}
+          >
+            <ShieldCheck className="w-3.5 h-3.5" />
+            Strategic Investment · Global Reach
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6 leading-tight">
-            Property Investment, Mortgage & Tax Enquiry Hub
+
+          {/* BRANDING: Main headline */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+            Property Investment,<br />Mortgage &amp; Tax Enquiry Hub
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-            Helping clients structure property investments, finance, tax and limited company setup with confidence. Select an option below to begin your enquiry.
+
+          {/* BRANDING: Subheading */}
+          <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-2xl mx-auto mb-10">
+            Helping clients structure property investments, finance, tax and limited company setup with confidence.
           </p>
+
+          {/* Markets served — from business card */}
+          <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
+            <span className="flex items-center gap-1.5">
+              <Globe className="w-4 h-4" style={{ color: "#C9981F" }} />
+              United Kingdom
+            </span>
+            <span className="text-gray-700">·</span>
+            <span className="flex items-center gap-1.5">
+              <Globe className="w-4 h-4" style={{ color: "#C9981F" }} />
+              Dubai
+            </span>
+            <span className="text-gray-700">·</span>
+            <span className="flex items-center gap-1.5">
+              <Globe className="w-4 h-4" style={{ color: "#C9981F" }} />
+              India
+            </span>
+          </div>
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {/* Card 1 */}
-          <Card className="flex flex-col h-full hover:shadow-lg transition-all duration-300 border-border/50 hover:border-primary/20 bg-card">
-            <CardHeader>
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 text-primary">
-                <Landmark className="w-6 h-6" />
-              </div>
-              <CardTitle className="text-xl">BTL Property Investment</CardTitle>
-              <CardDescription className="text-base mt-2">
-                Enquire about portfolio building, buy-to-let investments, HMOs, and commercial conversions.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="mt-auto pt-6">
-              <Link href="/btl">
-                <Button className="w-full group" variant="default">
-                  Start Enquiry
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
+      {/* ── Service cards ────────────────────────────────────────────────────── */}
+      <section className="w-full bg-background">
+        <div className="container mx-auto px-4 py-16 md:py-20 max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
 
-          {/* Card 2 */}
-          <Card className="flex flex-col h-full hover:shadow-lg transition-all duration-300 border-border/50 hover:border-primary/20 bg-card">
-            <CardHeader>
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 text-primary">
-                <HomeIcon className="w-6 h-6" />
-              </div>
-              <CardTitle className="text-xl">Mortgage Advice</CardTitle>
-              <CardDescription className="text-base mt-2">
-                Get help with residential, buy-to-let, remortgaging, bridging finance, and product transfers.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="mt-auto pt-6">
-              <Link href="/mortgage">
-                <Button className="w-full group" variant="default">
-                  Start Enquiry
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
+            {/* BTL Investment */}
+            <Card className="flex flex-col h-full hover:shadow-lg transition-all duration-300 border-border/60 bg-card group">
+              <CardHeader>
+                <div
+                  className="w-12 h-12 rounded flex items-center justify-center mb-4 transition-colors"
+                  style={{ backgroundColor: "#C9981F18" }}
+                >
+                  <Landmark className="w-6 h-6" style={{ color: "#C9981F" }} />
+                </div>
+                <CardTitle className="text-xl">BTL Property Investment</CardTitle>
+                <CardDescription className="text-base mt-2">
+                  Portfolio building, buy-to-let, HMOs, serviced accommodation and commercial conversions — UK, Dubai &amp; India.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="mt-auto pt-6">
+                <Link href="/btl">
+                  <Button
+                    className="w-full group/btn text-white font-semibold"
+                    style={{ backgroundColor: "#C9981F", borderColor: "#C9981F" }}
+                    data-testid="button-btl-enquiry"
+                  >
+                    Start Enquiry
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
 
-          {/* Card 3 */}
-          <Card className="flex flex-col h-full hover:shadow-lg transition-all duration-300 border-border/50 hover:border-primary/20 bg-card">
-            <CardHeader>
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 text-primary">
-                <FileText className="w-6 h-6" />
-              </div>
-              <CardTitle className="text-xl">Tax & Accounting</CardTitle>
-              <CardDescription className="text-base mt-2">
-                Limited company setup, property tax planning, annual accounts, and bookkeeping services.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="mt-auto pt-6">
-              <Link href="/tax">
-                <Button className="w-full group" variant="default">
-                  Start Enquiry
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
+            {/* Mortgage */}
+            <Card className="flex flex-col h-full hover:shadow-lg transition-all duration-300 border-border/60 bg-card group">
+              <CardHeader>
+                <div
+                  className="w-12 h-12 rounded flex items-center justify-center mb-4"
+                  style={{ backgroundColor: "#C9981F18" }}
+                >
+                  <Building2 className="w-6 h-6" style={{ color: "#C9981F" }} />
+                </div>
+                <CardTitle className="text-xl">Mortgage Advice</CardTitle>
+                <CardDescription className="text-base mt-2">
+                  First-time buyer, buy-to-let, remortgage, product transfer, limited company BTL and bridging finance.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="mt-auto pt-6">
+                <Link href="/mortgage">
+                  <Button
+                    className="w-full group/btn text-white font-semibold"
+                    style={{ backgroundColor: "#C9981F", borderColor: "#C9981F" }}
+                    data-testid="button-mortgage-enquiry"
+                  >
+                    Start Enquiry
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            {/* Tax & Accounting */}
+            <Card className="flex flex-col h-full hover:shadow-lg transition-all duration-300 border-border/60 bg-card group">
+              <CardHeader>
+                <div
+                  className="w-12 h-12 rounded flex items-center justify-center mb-4"
+                  style={{ backgroundColor: "#C9981F18" }}
+                >
+                  <FileText className="w-6 h-6" style={{ color: "#C9981F" }} />
+                </div>
+                <CardTitle className="text-xl">Tax &amp; Accounting</CardTitle>
+                <CardDescription className="text-base mt-2">
+                  Limited company setup, SPV formation, property tax planning, self-assessment, corporation tax and bookkeeping.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="mt-auto pt-6">
+                <Link href="/tax">
+                  <Button
+                    className="w-full group/btn text-white font-semibold"
+                    style={{ backgroundColor: "#C9981F", borderColor: "#C9981F" }}
+                    data-testid="button-tax-enquiry"
+                  >
+                    Start Enquiry
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Disclaimer */}
+          <div className="mt-14 p-5 rounded border border-border/60 bg-muted/40 text-center max-w-4xl mx-auto">
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              <strong className="text-foreground">Important Disclaimer:</strong> This portal collects enquiries only. No regulated mortgage, investment, tax or legal advice is given here. All recommendations are provided only after a full review by a qualified professional.
+            </p>
+          </div>
         </div>
-
-        <div className="mt-20 p-6 bg-muted/50 rounded-lg border border-border/50 text-center max-w-4xl mx-auto">
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            <strong className="text-foreground">Important Disclaimer:</strong> This portal collects enquiries only. No regulated mortgage, investment, tax or legal advice is given here. All recommendations are provided only after a full review by a qualified professional.
-          </p>
-        </div>
-      </div>
+      </section>
     </Layout>
   );
 }
