@@ -3,13 +3,15 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: Magic Key Property enquiry hub API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: enquiries
+    description: Enquiry form submissions
 paths:
   /healthz:
     get:
@@ -24,6 +26,82 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /enquiries/btl:
+    post:
+      operationId: submitBtlEnquiry
+      tags: [enquiries]
+      summary: Submit a BTL Property Investment enquiry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BtlEnquiryInput"
+      responses:
+        "200":
+          description: Enquiry submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EnquiryResult"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /enquiries/mortgage:
+    post:
+      operationId: submitMortgageEnquiry
+      tags: [enquiries]
+      summary: Submit a Mortgage enquiry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MortgageEnquiryInput"
+      responses:
+        "200":
+          description: Enquiry submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EnquiryResult"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /enquiries/tax:
+    post:
+      operationId: submitTaxEnquiry
+      tags: [enquiries]
+      summary: Submit a Tax, Accounting & Limited Company Formation enquiry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TaxEnquiryInput"
+      responses:
+        "200":
+          description: Enquiry submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EnquiryResult"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +112,183 @@ components:
       required:
         - status
 
+    EnquiryResult:
+      type: object
+      required: [success, message]
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+
+    ErrorResponse:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+
+    BtlEnquiryInput:
+      type: object
+      required:
+        - fullName
+        - email
+        - mobileNumber
+        - currentPostcode
+        - isFirstTimeLandlord
+        - investmentGoal
+        - ownershipPreference
+        - propertyType
+        - financeRequired
+        - consentToContact
+        - privacyAcknowledged
+      properties:
+        fullName:
+          type: string
+          minLength: 1
+        email:
+          type: string
+          format: email
+        mobileNumber:
+          type: string
+        currentPostcode:
+          type: string
+        isFirstTimeLandlord:
+          type: string
+          enum: [yes, no]
+        investmentGoal:
+          type: string
+          enum: [capital_growth, rental_income, portfolio_building, tax_planning, other]
+        preferredInvestmentLocation:
+          type: ["string", "null"]
+        budgetDepositAvailable:
+          type: ["string", "null"]
+        expectedPurchasePriceRange:
+          type: ["string", "null"]
+        ownershipPreference:
+          type: string
+          enum: [personal_name, limited_company, unsure]
+        existingPropertiesOwned:
+          type: ["string", "null"]
+        propertyType:
+          type: string
+          enum: [single_let, hmo, serviced_accommodation, multi_unit, commercial_conversion, unsure]
+        financeRequired:
+          type: string
+          enum: [yes, no, unsure]
+        expectedRentalIncome:
+          type: ["string", "null"]
+        timescaleToInvest:
+          type: ["string", "null"]
+        questionsOrConcerns:
+          type: ["string", "null"]
+        consentToContact:
+          type: boolean
+        privacyAcknowledged:
+          type: boolean
+
+    MortgageEnquiryInput:
+      type: object
+      required:
+        - fullName
+        - email
+        - mobileNumber
+        - postcode
+        - mortgageType
+        - employmentStatus
+        - creditHistory
+        - consentToContact
+        - privacyAcknowledged
+      properties:
+        fullName:
+          type: string
+          minLength: 1
+        email:
+          type: string
+          format: email
+        mobileNumber:
+          type: string
+        postcode:
+          type: string
+        mortgageType:
+          type: string
+          enum: [residential, buy_to_let, remortgage, product_transfer, limited_company_btl, bridging_development]
+        purchasePriceOrValue:
+          type: ["string", "null"]
+        mortgageAmountRequired:
+          type: ["string", "null"]
+        depositOrEquityAvailable:
+          type: ["string", "null"]
+        employmentStatus:
+          type: string
+        annualIncome:
+          type: ["string", "null"]
+        creditHistory:
+          type: string
+          enum: [excellent, good, fair, poor, unsure]
+        propertyLocation:
+          type: ["string", "null"]
+        timescale:
+          type: ["string", "null"]
+        hasMortgageOffer:
+          type: ["string", "null"]
+          enum: [yes, no, null]
+        preferredContactMethod:
+          type: ["string", "null"]
+        consentToContact:
+          type: boolean
+        privacyAcknowledged:
+          type: boolean
+
+    TaxEnquiryInput:
+      type: object
+      required:
+        - fullName
+        - email
+        - mobileNumber
+        - alreadyInvestingInProperty
+        - alreadyHasLimitedCompany
+        - serviceRequired
+        - consentToContact
+        - privacyAcknowledged
+      properties:
+        fullName:
+          type: string
+          minLength: 1
+        email:
+          type: string
+          format: email
+        mobileNumber:
+          type: string
+        alreadyInvestingInProperty:
+          type: string
+          enum: [yes, no]
+        alreadyHasLimitedCompany:
+          type: string
+          enum: [yes, no]
+        serviceRequired:
+          type: string
+          enum: [limited_company_setup, bookkeeping, annual_accounts, corporation_tax, self_assessment, vat, payroll, spv_setup, property_tax_planning, other]
+        numberOfPropertiesOwned:
+          type: ["string", "null"]
+        estimatedAnnualRentalIncome:
+          type: ["string", "null"]
+        propertiesOwnedPersonallyOrCompany:
+          type: ["string", "null"]
+        needCompaniesHouseHelp:
+          type: ["string", "null"]
+          enum: [yes, no, null]
+        needBusinessBankAccountHelp:
+          type: ["string", "null"]
+          enum: [yes, no, null]
+        needTaxAdviceBeforePurchase:
+          type: ["string", "null"]
+          enum: [yes, no, null]
+        preferredContactMethod:
+          type: ["string", "null"]
+        messageOrEnquiry:
+          type: ["string", "null"]
+        consentToContact:
+          type: boolean
+        privacyAcknowledged:
+          type: boolean

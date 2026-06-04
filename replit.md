@@ -1,6 +1,6 @@
-# [Project name]
+# Magic Key Property
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A UK property investment and mortgage advisory enquiry hub. Collects client enquiries via three professional forms and forwards them to a configured webhook.
 
 ## Run & Operate
 
@@ -8,37 +8,53 @@ _Replace the heading above with the project's name, and this line with one sente
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
+- Frontend: React + Vite (artifacts/magic-key-property)
+- API: Express 5 (artifacts/api-server)
+- Validation: Zod (`zod/v4`), Orval codegen
 - Build: esbuild (CJS bundle)
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `lib/api-spec/openapi.yaml` — OpenAPI contract (source of truth)
+- `lib/api-client-react/src/generated/` — generated React Query hooks
+- `lib/api-zod/src/generated/` — generated Zod validation schemas
+- `artifacts/api-server/src/routes/enquiries.ts` — form submission routes + webhook forwarding
+- `artifacts/magic-key-property/src/` — React frontend
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- No database — enquiries are forwarded directly to a webhook (WEBHOOK_URL secret). This keeps the stack lean and lets the business use Make.com / Zapier / n8n downstream.
+- Three form types: BTL Property Investment, Mortgage, Tax/Accounting/Ltd Co Formation.
+- Each POST route validates with Zod, forwards to the webhook with a `formType` field, and returns a success/error JSON response.
+- Frontend uses generated hooks (`useSubmitBtlEnquiry`, `useSubmitMortgageEnquiry`, `useSubmitTaxEnquiry`) so the API contract is always type-safe.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Home page with headline, three service cards linking to each form
+- Three enquiry forms with full field validation and thank-you confirmation
+- Disclaimer on every page: no regulated advice is given; all recommendations after full professional review
+- Webhook forwarding: every submission POSTs JSON to WEBHOOK_URL with a `formType` field
 
-## User preferences
+## Secrets
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- `WEBHOOK_URL` — required. The URL to POST form submissions to (e.g. Make.com, Zapier, n8n webhook)
+- `SESSION_SECRET` — pre-existing
+
+## Branding / editing guide
+
+Search for these comments in the source to customise:
+- `// BRANDING:` — business name
+- `// CONTACT:` — phone number
+- Privacy policy text is in each form component near the consent checkboxes
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- After any OpenAPI spec change, run codegen before typecheck or the generated types will be stale.
+- The webhook URL must be set as `WEBHOOK_URL` in Replit Secrets, not as a plain env var.
 
 ## Pointers
 
