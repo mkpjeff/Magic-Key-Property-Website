@@ -140,7 +140,7 @@ export function Layout({ children }: { children: ReactNode }) {
               {/* BRANDING: Tagline in footer */}
               <p className="text-xs tracking-widest uppercase" style={{ color: "#C9981F" }}>{tagline}</p>
               <p className="text-sm text-gray-400 leading-relaxed mt-1">
-                Helping clients structure property investments, finance, tax and limited company setup with confidence.
+                We combine property investment insight, mortgage expertise and tax awareness to help clients create clear, sustainable investment strategies. Whether you're purchasing your first Buy-to-Let or scaling a portfolio, our goal is to simplify the process and help you move forward with confidence.
               </p>
             </div>
 

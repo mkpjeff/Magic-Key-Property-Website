@@ -29,7 +29,7 @@ export default function HomePage() {
 
           {/* BRANDING: Subheading */}
           <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-2xl mx-auto mb-10">
-            Helping clients structure property investments, finance, tax and limited company setup with confidence.
+            We combine property investment insight, mortgage expertise and tax awareness to help clients create clear, sustainable investment strategies. Whether you're purchasing your first Buy-to-Let or scaling a portfolio, our goal is to simplify the process and help you move forward with confidence.
           </p>
 
           {/* Markets served — from business card */}
