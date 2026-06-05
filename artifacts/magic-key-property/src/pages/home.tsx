@@ -78,6 +78,12 @@ export default function HomePage() {
             Strategic Investment · Global Reach
           </div>
 
+          {/* Headline */}
+          <h1 className="text-4xl md:text-5xl lg:text-[3.75rem] font-serif font-bold text-white leading-[1.15] tracking-tight">
+            Property Investment,{" "}
+            Mortgage &amp; Tax Enquiry Hub
+          </h1>
+
           {/* Markets — high-visibility gold pills */}
           <div className="flex flex-wrap justify-center gap-3 mt-2">
             {markets.map((market) => (
