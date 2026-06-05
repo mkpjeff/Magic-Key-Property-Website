@@ -34,14 +34,14 @@ export function Layout({ children }: { children: ReactNode }) {
 
       {/* ── Header: deep charcoal matching the business card dark panel ── */}
       <header style={{ backgroundColor: "#0f1117" }} className="sticky top-0 z-50 w-full">
-        <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-8 max-w-6xl">
+        <div className="container mx-auto flex h-24 items-center justify-between px-4 md:px-8 max-w-6xl">
 
           {/* BRANDING: Logo — swap logo-mk.png in src/assets to change */}
           <Link href="/" className="flex items-center group" onClick={() => setMobileMenuOpen(false)}>
             <img
               src={logoMk}
               alt={businessName}
-              className="h-16 w-auto object-contain group-hover:opacity-90 transition-opacity"
+              className="h-20 w-auto object-contain group-hover:opacity-90 transition-opacity"
             />
           </Link>
 
