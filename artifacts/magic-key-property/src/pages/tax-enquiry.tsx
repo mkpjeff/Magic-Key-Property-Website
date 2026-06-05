@@ -94,12 +94,12 @@ export default function TaxEnquiryPage() {
       <section className="form-hero w-full">
         <div className="orb orb-1" style={{ opacity: 0.5 }} />
         <div className="orb orb-2" style={{ opacity: 0.3 }} />
-        <div className="container mx-auto px-4 py-10 md:py-14 max-w-3xl relative z-10">
-          <Link href="/" className="inline-flex items-center gap-1 text-sm font-medium text-gray-400 hover:text-white transition-colors mb-6">
+        <div className="container mx-auto px-4 py-10 md:py-14 max-w-3xl relative z-10 flex flex-col items-start gap-4">
+          <Link href="/" className="inline-flex items-center gap-1 text-sm font-medium text-gray-400 hover:text-white transition-colors">
             <ArrowLeft className="w-4 h-4" /> Back to Home
           </Link>
-          <div className="badge-pill mb-4">Tax &amp; Accounting</div>
-          <h1 className="text-3xl md:text-4xl font-serif font-bold text-white mb-3 leading-tight">
+          <div className="badge-pill">Tax &amp; Accounting</div>
+          <h1 className="text-3xl md:text-4xl font-serif font-bold text-white leading-tight">
             Tax &amp; Accounting Enquiry
           </h1>
           <p className="text-gray-400">Complete the form below to receive professional tax and accounting advice.</p>

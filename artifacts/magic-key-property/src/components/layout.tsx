@@ -126,11 +126,11 @@ export function Layout({ children }: { children: ReactNode }) {
 
       {/* ── Footer: matching charcoal ── */}
       <footer style={{ backgroundColor: "#0f1117" }} className="border-t border-white/10">
-        <div className="container mx-auto px-4 py-10 md:py-14 max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="container mx-auto px-6 md:px-10 py-12 md:py-16 max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1.5fr] gap-10 md:gap-14 mb-10 items-start">
 
             {/* Brand block */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4 max-w-xs">
               {/* BRANDING: Footer logo */}
               <img
                 src={logoMk}
@@ -138,35 +138,35 @@ export function Layout({ children }: { children: ReactNode }) {
                 className="h-16 w-auto object-contain self-start"
               />
               {/* BRANDING: Tagline in footer */}
-              <p className="text-xs tracking-widest uppercase" style={{ color: "#C9981F" }}>{tagline}</p>
-              <p className="text-sm text-gray-400 leading-relaxed mt-1">
-                We combine property investment insight, mortgage expertise and tax awareness to help clients create clear, sustainable investment strategies. Whether you're purchasing your first Buy-to-Let or scaling a portfolio, our goal is to simplify the process and help you move forward with confidence.
+              <p className="text-xs tracking-widest uppercase font-semibold" style={{ color: "#C9981F" }}>{tagline}</p>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                Helping clients structure property investments, finance, tax and limited company setup with confidence — across the UK, Dubai and India.
               </p>
             </div>
 
             {/* Services */}
-            <div className="flex flex-col gap-2">
-              <h4 className="text-sm font-semibold text-white mb-1 uppercase tracking-wide">Our Services</h4>
-              <Link href="/btl" className="text-sm text-gray-400 hover:text-white transition-colors">BTL Property Investment</Link>
+            <div className="flex flex-col gap-3">
+              <h4 className="text-xs font-bold text-white uppercase tracking-[0.12em] mb-2">Our Services</h4>
+              <Link href="/btl" className="text-sm text-gray-400 hover:text-white transition-colors">Property Investment</Link>
               <Link href="/mortgage" className="text-sm text-gray-400 hover:text-white transition-colors">Mortgage Advice</Link>
               <Link href="/tax" className="text-sm text-gray-400 hover:text-white transition-colors">Tax &amp; Accounting</Link>
             </div>
 
             {/* Contact */}
             <div className="flex flex-col gap-3">
-              <h4 className="text-sm font-semibold text-white mb-1 uppercase tracking-wide">Contact</h4>
+              <h4 className="text-xs font-bold text-white uppercase tracking-[0.12em] mb-2">Contact</h4>
               {/* CONTACT: Footer phone */}
-              <a href={`tel:${phoneNumber.replace(/\s/g, "")}`} className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+              <a href={`tel:${phoneNumber.replace(/\s/g, "")}`} className="flex items-center gap-2.5 text-sm text-gray-400 hover:text-white transition-colors">
                 <Phone className="h-4 w-4 shrink-0" style={{ color: "#C9981F" }} />
                 {phoneNumber}
               </a>
               {/* CONTACT: Footer email */}
-              <a href={`mailto:${emailAddress}`} className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+              <a href={`mailto:${emailAddress}`} className="flex items-center gap-2.5 text-sm text-gray-400 hover:text-white transition-colors">
                 <Mail className="h-4 w-4 shrink-0" style={{ color: "#C9981F" }} />
                 {emailAddress}
               </a>
               {/* CONTACT: Footer website */}
-              <a href={`https://${website}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+              <a href={`https://${website}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-sm text-gray-400 hover:text-white transition-colors">
                 <Globe className="h-4 w-4 shrink-0" style={{ color: "#C9981F" }} />
                 {website}
               </a>
