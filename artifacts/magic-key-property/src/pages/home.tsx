@@ -78,20 +78,6 @@ export default function HomePage() {
             Strategic Investment · Global Reach
           </div>
 
-          {/* Headline — all white */}
-          <h1 className="text-4xl md:text-5xl lg:text-[3.75rem] font-serif font-bold text-white leading-[1.15] tracking-tight">
-            Property Investment,{" "}
-            Mortgage &amp; Tax Enquiry Hub
-          </h1>
-
-          {/* Sub-copy */}
-          <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-2xl">
-            We combine property investment insight, mortgage expertise and tax awareness to help
-            clients create clear, sustainable investment strategies. Whether you're purchasing your
-            first Buy-to-Let or scaling a portfolio, our goal is to simplify the process and help
-            you move forward with confidence.
-          </p>
-
           {/* Markets — high-visibility gold pills */}
           <div className="flex flex-wrap justify-center gap-3 mt-2">
             {markets.map((market) => (
