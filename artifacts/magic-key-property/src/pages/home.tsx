@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Building2, Landmark, FileText, Globe, ShieldCheck } from "lucide-react";
+import { ArrowRight, Building2, Landmark, FileText, Globe, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 const services = [
   {
@@ -30,6 +30,31 @@ const services = [
   },
 ];
 
+const reasons = [
+  {
+    title: "Property Investment Expertise",
+    body: "Identify opportunities based on cash flow, yield and long-term growth potential.",
+  },
+  {
+    title: "Specialist Mortgage Advice",
+    body: "Access lenders and products designed for investors and portfolio landlords.",
+  },
+  {
+    title: "Tax-Efficient Structures",
+    body: "Understand the benefits of personal ownership, SPVs and limited company investing.",
+  },
+  {
+    title: "End-to-End Support",
+    body: "From initial enquiry through purchase, finance and portfolio growth.",
+  },
+  {
+    title: "International Investor Support",
+    body: "Helping clients from the UK, UAE, India and overseas markets.",
+  },
+];
+
+const markets = ["United Kingdom", "Dubai", "India"];
+
 export default function HomePage() {
   return (
     <Layout>
@@ -53,13 +78,10 @@ export default function HomePage() {
             Strategic Investment · Global Reach
           </div>
 
-          {/* Headline */}
+          {/* Headline — all white */}
           <h1 className="text-4xl md:text-5xl lg:text-[3.75rem] font-serif font-bold text-white leading-[1.15] tracking-tight">
             Property Investment,{" "}
-            <span className="gold-text">Mortgage</span>
-            {" "}&amp;{" "}
-            <span className="gold-text">Tax</span>{" "}
-            Enquiry Hub
+            Mortgage &amp; Tax Enquiry Hub
           </h1>
 
           {/* Sub-copy */}
@@ -70,37 +92,38 @@ export default function HomePage() {
             you move forward with confidence.
           </p>
 
-          {/* Markets */}
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500 mt-2">
-            {["United Kingdom", "Dubai", "India"].map((market) => (
-              <span key={market} className="flex items-center gap-1.5">
-                <Globe className="w-4 h-4 gold-icon" />
+          {/* Markets — high-visibility gold pills */}
+          <div className="flex flex-wrap justify-center gap-3 mt-2">
+            {markets.map((market) => (
+              <span key={market} className="market-pill">
+                <Globe className="w-4 h-4" />
                 {market}
               </span>
             ))}
           </div>
 
-          {/* CTA row */}
-          <div className="flex flex-wrap gap-4 justify-center mt-4">
-            <Link href="/btl">
-              <Button className="cta-primary px-7 py-3 text-base font-semibold rounded-full shadow-lg">
-                Start an Enquiry
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
+          {/* Why section */}
+          <div className="why-box mt-6 w-full max-w-2xl text-left">
+            <h2 className="text-xl font-semibold text-white mb-5 text-center">
+              Why Investors Choose Magic Key Property
+            </h2>
+            <ul className="flex flex-col gap-4">
+              {reasons.map(({ title, body }) => (
+                <li key={title} className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" style={{ color: "#C9981F" }} />
+                  <div>
+                    <span className="font-semibold text-white">{title}</span>
+                    <span className="text-gray-400"> — {body}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-
-        {/* Wave divider */}
-        <div className="wave-divider">
-          <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M0,40 C240,100 480,0 720,50 C960,100 1200,10 1440,55 L1440,100 L0,100 Z"
-              fill="var(--wave-fill)"
-            />
-          </svg>
-        </div>
       </section>
+
+      {/* ── Single-line separator ──────────────────────────────────────────────── */}
+      <div className="section-divider" />
 
       {/* ── Service cards ─────────────────────────────────────────────────────── */}
       <section className="relative w-full cards-section">
@@ -114,22 +137,15 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {services.map(({ icon: Icon, title, description, href, testId }) => (
               <div key={href} className="service-card group">
-                {/* Gold glow spot on hover */}
                 <div className="card-glow" />
-
                 <div className="relative z-10 flex flex-col h-full gap-6 p-8">
-                  {/* Icon */}
                   <div className="icon-wrap">
                     <Icon className="w-6 h-6" style={{ color: "#C9981F" }} />
                   </div>
-
-                  {/* Text */}
                   <div className="flex flex-col gap-2 flex-1">
                     <h3 className="text-xl font-semibold text-white">{title}</h3>
                     <p className="text-gray-400 leading-relaxed text-sm">{description}</p>
                   </div>
-
-                  {/* CTA */}
                   <Link href={href}>
                     <Button
                       data-testid={testId}
