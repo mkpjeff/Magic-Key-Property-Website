@@ -6,7 +6,7 @@ import { ArrowRight, Building2, Landmark, FileText, Globe, ShieldCheck, CheckCir
 const services = [
   {
     icon: Landmark,
-    title: "BTL Property Investment",
+    title: "Property Investment",
     description:
       "Portfolio building, buy-to-let, HMOs, serviced accommodation and commercial conversions — UK, Dubai & India.",
     href: "/btl",
@@ -122,7 +122,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 py-20 md:py-28 max-w-6xl">
 
           {/* Section label */}
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] mb-12" style={{ color: "#C9981F" }}>
+          <p className="text-center text-base font-bold uppercase tracking-[0.2em] mb-12" style={{ color: "#C9981F" }}>
             Our Services
           </p>
 
@@ -135,8 +135,8 @@ export default function HomePage() {
                     <Icon className="w-6 h-6" style={{ color: "#C9981F" }} />
                   </div>
                   <div className="flex flex-col gap-2 flex-1">
-                    <h3 className="text-xl font-semibold text-white">{title}</h3>
-                    <p className="text-gray-400 leading-relaxed text-sm">{description}</p>
+                    <h3 className="text-2xl font-bold" style={{ color: "#1a1a2e" }}>{title}</h3>
+                    <p className="text-gray-500 leading-relaxed text-sm">{description}</p>
                   </div>
                   <Link href={href}>
                     <Button
