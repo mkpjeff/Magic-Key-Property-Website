@@ -392,6 +392,53 @@
   background: rgba(201,152,31,0.04);
 }
 
+/* ─── FORM PAGE STYLES ────────────────────────────────────────────────────── */
+
+/* Compact dark hero for form pages */
+.form-hero {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, #1c1508 0%, #0f1117 55%, #080b12 100%);
+}
+
+/* Light body behind the form itself */
+.form-body {
+  background: #faf9f6;
+}
+
+/* Form container card */
+.form-card {
+  background: #ffffff;
+  border: 1px solid rgba(201,152,31,0.12);
+  border-radius: 1.25rem;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+/* Section headings inside the form */
+.form-section-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #C9981F;
+  padding-bottom: 0.6rem;
+  border-bottom: 1.5px solid rgba(201,152,31,0.25);
+}
+
+/* Success card after submission */
+.form-success-card {
+  background: #ffffff;
+  border: 1px solid rgba(201,152,31,0.15);
+  border-radius: 1.25rem;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(201,152,31,0.10);
+}
+
 @layer utilities {
   input[type="search"]::-webkit-search-cancel-button {
     @apply hidden;

@@ -94,49 +94,58 @@ export default function BtlEnquiryPage() {
 
   return (
     <Layout>
-      <div className="w-full max-w-3xl mx-auto px-4 py-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
-        
+
+      {/* ── Form hero banner ─────────────────────────────────────────────────── */}
+      <section className="form-hero w-full">
+        <div className="orb orb-1" style={{ opacity: 0.5 }} />
+        <div className="orb orb-2" style={{ opacity: 0.3 }} />
+        <div className="container mx-auto px-4 py-10 md:py-14 max-w-3xl relative z-10">
+          <Link href="/" className="inline-flex items-center gap-1 text-sm font-medium text-gray-400 hover:text-white transition-colors mb-6">
+            <ArrowLeft className="w-4 h-4" /> Back to Home
+          </Link>
+          <div className="badge-pill mb-4">Property Investment</div>
+          <h1 className="text-3xl md:text-4xl font-serif font-bold text-white mb-3 leading-tight">
+            Property Investment Enquiry
+          </h1>
+          <p className="text-gray-400">Complete the form below to discuss your property investment goals.</p>
+        </div>
+      </section>
+
+      {/* ── Form section ─────────────────────────────────────────────────────── */}
+      <section className="form-body w-full">
+        <div className="container mx-auto px-4 py-10 max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+
         {submitted ? (
-          <Card className="border-primary/20 shadow-md">
-            <CardContent className="pt-12 pb-12 flex flex-col items-center text-center">
-              <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-6">
-                <CheckCircle2 className="w-8 h-8 text-green-600 dark:text-green-400" />
-              </div>
-              <CardTitle className="text-2xl mb-2 font-serif">Enquiry Submitted</CardTitle>
-              <CardDescription className="text-base max-w-md mx-auto mb-8">
-                Thank you for your BTL Property Investment enquiry. Our team will review your details and be in touch shortly.
-              </CardDescription>
-              <Link href="/">
-                <Button variant="outline">
-                  <ArrowLeft className="w-4 h-4 mr-2" />
-                  Return Home
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
+          <div className="form-success-card">
+            <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6" style={{ background: "rgba(201,152,31,0.15)" }}>
+              <CheckCircle2 className="w-8 h-8" style={{ color: "#C9981F" }} />
+            </div>
+            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-2">Enquiry Submitted</h2>
+            <p className="text-gray-500 max-w-md mx-auto mb-8">
+              Thank you for your Property Investment enquiry. Our team will review your details and be in touch shortly.
+            </p>
+            <Link href="/">
+              <Button variant="outline" className="rounded-full">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Return Home
+              </Button>
+            </Link>
+          </div>
         ) : (
           <>
-            <div className="mb-8">
-              <Link href="/" className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors mb-6">
-                <ArrowLeft className="w-4 h-4 mr-1" /> Back
-              </Link>
-              <h1 className="text-3xl font-serif font-bold text-foreground mb-3">BTL Property Investment Enquiry</h1>
-              <p className="text-muted-foreground">Complete the form below to discuss your property investment goals.</p>
-            </div>
-
-            <div className="mb-8 p-4 bg-muted/40 rounded-md border border-border/50">
-              <p className="text-xs text-muted-foreground">
-                <strong>Disclaimer:</strong> This portal collects enquiries only. No regulated mortgage, investment, tax or legal advice is given here. All recommendations are provided only after a full review by a qualified professional.
+            <div className="disclaimer-bar mb-8">
+              <p className="text-xs text-gray-500">
+                <strong className="text-gray-700">Disclaimer:</strong> This portal collects enquiries only. No regulated mortgage, investment, tax or legal advice is given here. All recommendations are provided only after a full review by a qualified professional.
               </p>
             </div>
 
-            <Card className="border-border/60 shadow-sm">
+            <div className="form-card">
               <CardContent className="p-6 md:p-8">
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                     
                     <div className="space-y-6">
-                      <h3 className="text-lg font-semibold border-b pb-2">Personal Details</h3>
+                      <h3 className="form-section-heading">Personal Details</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <FormField
                           control={form.control}
@@ -194,7 +203,7 @@ export default function BtlEnquiryPage() {
                     </div>
 
                     <div className="space-y-6 pt-4">
-                      <h3 className="text-lg font-semibold border-b pb-2">Investment Profile</h3>
+                      <h3 className="form-section-heading">Investment Profile</h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <FormField
@@ -476,7 +485,7 @@ export default function BtlEnquiryPage() {
                       />
                     </div>
 
-                    <Button type="submit" className="w-full text-lg py-6" disabled={mutation.isPending}>
+                    <Button type="submit" className="w-full text-lg py-6 rounded-full font-semibold" style={{ backgroundColor: "#C9981F" }} disabled={mutation.isPending}>
                       {mutation.isPending ? (
                         <>
                           <Loader2 className="mr-2 h-5 w-5 animate-spin" />
@@ -489,10 +498,11 @@ export default function BtlEnquiryPage() {
                   </form>
                 </Form>
               </CardContent>
-            </Card>
+            </div>
           </>
         )}
-      </div>
+        </div>
+      </section>
     </Layout>
   );
 }
