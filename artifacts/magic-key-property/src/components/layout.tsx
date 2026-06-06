@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, Phone, Mail, Globe } from "lucide-react";
 import logoMk from "@/assets/logo-mk.png";
@@ -6,20 +6,12 @@ import logoMk from "@/assets/logo-mk.png";
 export function Layout({ children }: { children: ReactNode }) {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
 
-  // BRANDING: Change business name here
   const businessName = "Magic Key Property";
-
-  // BRANDING: Change tagline here
   const tagline = "Strategic Investment. Global Reach.";
-
-  // CONTACT: Change phone number here
   const phoneNumber = "+44 7775 359 351";
-
-  // CONTACT: Change email address here
   const emailAddress = "mahudes@magickeyproperty.com";
-
-  // CONTACT: Change website here
   const website = "www.magickeyproperty.com";
 
   const navigation = [
@@ -29,14 +21,29 @@ export function Layout({ children }: { children: ReactNode }) {
     { name: "Tax & Accounting", href: "/tax" },
   ];
 
+  useEffect(() => {
+    const timer = window.setTimeout(() => setShowLoader(false), 1200);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col w-full bg-background">
+      {showLoader && (
+        <div className="flash-loader">
+          <div className="flash-loader-glow" />
+          <div className="flash-loader-card">
+            <img src={logoMk} alt={businessName} className="flash-loader-logo" />
+            <p className="flash-loader-title">{businessName}</p>
+            <p className="flash-loader-tagline">{tagline}</p>
+            <div className="flash-loader-bar">
+              <span />
+            </div>
+          </div>
+        </div>
+      )}
 
-      {/* ── Header: deep charcoal matching the business card dark panel ── */}
       <header style={{ backgroundColor: "#0f1117" }} className="sticky top-0 z-50 w-full">
         <div className="container mx-auto flex h-24 items-center justify-between px-4 md:px-8 max-w-6xl">
-
-          {/* BRANDING: Logo — swap logo-mk.png in src/assets to change */}
           <Link href="/" className="flex items-center group" onClick={() => setMobileMenuOpen(false)}>
             <img
               src={logoMk}
@@ -45,7 +52,6 @@ export function Layout({ children }: { children: ReactNode }) {
             />
           </Link>
 
-          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1 text-sm font-medium">
             {navigation.map((item) => (
               <Link
@@ -63,7 +69,6 @@ export function Layout({ children }: { children: ReactNode }) {
             ))}
           </div>
 
-          {/* CONTACT: Phone in header (desktop) */}
           <div className="hidden md:flex items-center gap-1 pl-4 border-l border-white/10">
             <Phone className="h-3.5 w-3.5 shrink-0" style={{ color: "#C9981F" }} />
             <a
@@ -74,7 +79,6 @@ export function Layout({ children }: { children: ReactNode }) {
             </a>
           </div>
 
-          {/* Mobile menu toggle */}
           <button
             className="md:hidden text-gray-300 hover:text-white transition-colors p-2"
             onClick={() => setMobileMenuOpen((o) => !o)}
@@ -84,7 +88,6 @@ export function Layout({ children }: { children: ReactNode }) {
           </button>
         </div>
 
-        {/* Mobile nav drawer */}
         {mobileMenuOpen && (
           <div style={{ backgroundColor: "#191c24" }} className="md:hidden border-t border-white/10">
             <nav className="container mx-auto px-4 py-4 flex flex-col gap-1 max-w-6xl">
@@ -124,7 +127,7 @@ export function Layout({ children }: { children: ReactNode }) {
         {children}
       </main>
 
-      {/* ── Footer: matching charcoal ── */}
+      {/* ── Footer ── */}
       <footer style={{ backgroundColor: "#0f1117" }} className="border-t border-white/10">
         <div className="container mx-auto px-6 md:px-10 py-12 md:py-16 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1.5fr] gap-10 md:gap-14 mb-10 items-start">

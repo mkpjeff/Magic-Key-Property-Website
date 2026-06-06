@@ -213,6 +213,139 @@
   }
 }
 
+/* ─── FLASH INTRO LOADER ──────────────────────────────────────────────────── */
+
+.flash-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 40%, rgba(201, 152, 31, 0.12), transparent 44%),
+    #090d15;
+  animation: flashFadeOut 0.45s ease 0.9s forwards;
+}
+
+.flash-loader-glow {
+  position: absolute;
+  width: min(56vw, 420px);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  filter: blur(34px);
+  opacity: 0.34;
+  background: radial-gradient(circle, rgba(201, 152, 31, 0.45) 0%, rgba(201, 152, 31, 0) 70%);
+  animation: flashPulse 2.2s ease-in-out infinite;
+}
+
+.flash-loader-card {
+  position: relative;
+  width: min(82vw, 360px);
+  border: 1px solid rgba(201, 152, 31, 0.14);
+  border-radius: 10px;
+  padding: 24px 18px 14px;
+  background: rgba(10, 14, 24, 0.62);
+  backdrop-filter: blur(4px);
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.34);
+  animation: flashCardExit 0.52s ease 0.85s forwards;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.flash-loader-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(201, 152, 31, 0.06) 0deg,
+    rgba(201, 152, 31, 0.1) 90deg,
+    rgba(241, 213, 143, 0.95) 118deg,
+    rgba(201, 152, 31, 0.1) 145deg,
+    rgba(201, 152, 31, 0.06) 360deg
+  );
+  animation: borderSweep 2.7s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.flash-loader-logo {
+  width: 106px;
+  margin: 0 auto 10px;
+  animation: flashLogoBreathe 1.8s ease-in-out infinite;
+}
+
+.flash-loader-title {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  font-size: 1rem;
+  color: #f4e7c3;
+  animation: flashTextIn 0.5s ease both;
+}
+
+.flash-loader-tagline {
+  margin: 8px 0 14px;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.13em;
+  color: #c9981f;
+  opacity: 0.82;
+  animation: flashTextIn 0.5s ease 0.06s both;
+}
+
+.flash-loader-bar {
+  height: 4px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.flash-loader-bar span {
+  display: block;
+  width: 42%;
+  height: 100%;
+  background: linear-gradient(90deg, #c9981f, #f1d58f);
+  animation: flashLoad 1.25s ease-in-out infinite;
+}
+
+@keyframes flashLoad {
+  0% { transform: translateX(-115%); }
+  100% { transform: translateX(260%); }
+}
+
+@keyframes flashPulse {
+  0%, 100% { transform: scale(0.96); opacity: 0.25; }
+  50% { transform: scale(1.03); opacity: 0.42; }
+}
+
+@keyframes flashFadeOut {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+@keyframes flashLogoBreathe {
+  0%, 100% { transform: scale(0.98); opacity: 0.92; }
+  50% { transform: scale(1.03); opacity: 1; }
+}
+
+@keyframes flashCardExit {
+  to { opacity: 0; transform: scale(0.98); }
+}
+
+@keyframes flashTextIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes borderSweep {
+  to { transform: rotate(360deg); }
+}
+
 /* ─── FLUID HOME PAGE DESIGN ──────────────────────────────────────────────── */
 
 /* Hero */
