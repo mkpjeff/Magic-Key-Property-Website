@@ -17,10 +17,11 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    runtimeErrorOverlay(),
+    // Replit-only dev plugins — excluded from production builds (e.g. Vercel).
     ...(process.env.NODE_ENV !== "production" &&
     process.env.REPL_ID !== undefined
       ? [
+          runtimeErrorOverlay(),
           await import("@replit/vite-plugin-cartographer").then((m) =>
             m.cartographer({
               root: path.resolve(import.meta.dirname, ".."),
@@ -43,6 +44,20 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      // Radix UI ships files with a "use client" directive. Rollup strips it
+      // when bundling and emits a benign warning that can't be mapped to a
+      // source location. Suppress it to keep the build log clean.
+      onwarn(warning, defaultHandler) {
+        if (
+          warning.code === "MODULE_LEVEL_DIRECTIVE" ||
+          warning.code === "SOURCEMAP_ERROR"
+        ) {
+          return;
+        }
+        defaultHandler(warning);
+      },
+    },
   },
   server: {
     port,
