@@ -298,7 +298,7 @@ export default function BtlEnquiryPage() {
                                   </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
-                                  <SelectItem value="single_let">Single Let</SelectItem>
+                                  <SelectItem value="single_let">Buy to Let</SelectItem>
                                   <SelectItem value="hmo">HMO</SelectItem>
                                   <SelectItem value="serviced_accommodation">Serviced Accommodation</SelectItem>
                                   <SelectItem value="multi_unit">Multi-Unit</SelectItem>
