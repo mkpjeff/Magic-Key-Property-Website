@@ -436,7 +436,12 @@ export default function MortgageEnquiryPage() {
                       />
                     </div>
 
-                    <Button type="submit" className="w-full text-lg py-6 rounded-full font-semibold" style={{ backgroundColor: "#C9981F" }} disabled={mutation.isPending}>
+                    <div className="flex items-start gap-2 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-800">
+                      <span className="font-bold shrink-0">FCA Warning —</span>
+                      <span>Your home may be repossessed if you do not keep up with your mortgage payments*</span>
+                    </div>
+
+                    <Button type="submit" className="w-full rounded-full font-semibold py-4 text-base" style={{ backgroundColor: "#C9981F" }} disabled={mutation.isPending}>
                       {mutation.isPending ? (
                         <>
                           <Loader2 className="mr-2 h-5 w-5 animate-spin" />

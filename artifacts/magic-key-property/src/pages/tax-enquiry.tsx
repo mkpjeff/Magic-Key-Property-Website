@@ -481,7 +481,7 @@ export default function TaxEnquiryPage() {
                       />
                     </div>
 
-                    <Button type="submit" className="w-full text-lg py-6 rounded-full font-semibold" style={{ backgroundColor: "#C9981F" }} disabled={mutation.isPending}>
+                    <Button type="submit" className="w-full rounded-full font-semibold py-4 text-base" style={{ backgroundColor: "#C9981F" }} disabled={mutation.isPending}>
                       {mutation.isPending ? (
                         <>
                           <Loader2 className="mr-2 h-5 w-5 animate-spin" />
