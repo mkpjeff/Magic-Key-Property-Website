@@ -1,0 +1,2 @@
+- [Git push method](git-push-method.md) — main agent can't `git commit`/`push` via .git/config; push with token URL using ${GITHUB_PERSONAL_ACCESS_TOKEN} after turn-end auto-commit.
+- [Deployment targets](deployment-targets.md) — Replit serves full app (frontend+API via proxy); Vercel serves frontend only, so forms can't submit there.
