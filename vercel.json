@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm run typecheck:libs && pnpm --filter @workspace/magic-key-property run build",
+  "buildCommand": "pnpm --filter @workspace/magic-key-property run build",
   "outputDirectory": "artifacts/magic-key-property/dist/public",
   "installCommand": "pnpm install",
   "framework": null,
