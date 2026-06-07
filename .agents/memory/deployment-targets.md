@@ -16,7 +16,7 @@ files (frontend = static `dist/public` with SPA rewrite; API = `node dist/index.
 with a `/api/healthz` health check). The Replit proxy routes `/` and `/api` to the right
 service, so the forms reach the API out of the box. Just publish.
 
-## Vercel (frontend ONLY)
+## Vercel (frontend ONLY) — cross-origin API
 Vercel deploys only the frontend. Two `vercel.json` files exist for robustness:
 - repo-root `vercel.json` (used when Vercel Root Directory is blank)
 - `artifacts/magic-key-property/vercel.json` (used when Root Directory = the frontend folder)
@@ -24,6 +24,17 @@ Vercel deploys only the frontend. Two `vercel.json` files exist for robustness:
 **Why two:** Vercel reads `vercel.json` from the configured Root Directory only. The user's
 project had Root Directory set to the frontend subfolder, so the repo-root file was ignored.
 
-**Gotcha:** on Vercel the API is NOT deployed, so the enquiry forms cannot submit — the
-relative `/api/...` calls hit Vercel, which has no `/api`. Forms only work where the API is
-also reachable (i.e. Replit, or a separately hosted API).
+**Making forms work on Vercel:** the frontend reads `VITE_API_BASE_URL` (set in both
+`vercel.json` files) and calls `setBaseUrl()` from `@workspace/api-client-react` in `main.tsx`.
+When set, the generated client prepends that absolute origin to the relative `/api/...` paths,
+so a Vercel-hosted frontend can reach the Replit-hosted API. When unset (Replit), relative
+paths route through the proxy as before — so this is safe in both environments.
+
+**Two external prerequisites for Vercel forms to actually reach the webhook:**
+1. The Replit API deployment must be **public** — a private deployment returns HTTP 307
+   (login redirect) to anonymous browser traffic, silently breaking submissions.
+2. `WEBHOOK_URL` must be set in the Replit **production** deployment secrets (not just dev),
+   or the API can't forward.
+
+CORS: the API uses `app.use(cors())` (wildcard, no credentials) and forms send no cookies,
+so cross-origin POSTs work without extra CORS config.
