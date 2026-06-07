@@ -5,7 +5,6 @@
   "framework": null,
   "env": {
     "BASE_PATH": "/",
-    "PORT": "3000",
-    "VITE_API_BASE_URL": "https://property-wealth-builder--sherjeff.replit.app"
+    "PORT": "3000"
   }
 }
