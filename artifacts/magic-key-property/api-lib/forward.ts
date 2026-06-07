@@ -28,6 +28,9 @@ export function makeEnquiryHandler(
 
     const webhookUrl = process.env.WEBHOOK_URL;
     if (!webhookUrl) {
+      console.error(
+        `[${formType}] WEBHOOK_URL is not set in the Vercel environment — cannot forward enquiry.`,
+      );
       res
         .status(500)
         .json({ error: "Server is not configured. Please try again later." });
@@ -46,9 +49,20 @@ export function makeEnquiryHandler(
       });
 
       if (!response.ok) {
-        throw new Error(`Webhook responded with ${response.status}`);
+        const responseText = await response.text().catch(() => "<no body>");
+        console.error(
+          `[${formType}] Webhook returned non-2xx: HTTP ${response.status}. Body: ${responseText.slice(0, 500)}`,
+        );
+        res
+          .status(502)
+          .json({ error: "Failed to submit enquiry. Please try again." });
+        return;
       }
-    } catch {
+    } catch (err) {
+      console.error(
+        `[${formType}] Webhook request threw (network/DNS/timeout):`,
+        err instanceof Error ? err.message : err,
+      );
       res
         .status(500)
         .json({ error: "Failed to submit enquiry. Please try again." });
